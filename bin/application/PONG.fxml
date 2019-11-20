@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="application.SampleController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Gra">
+            <items>
+              <MenuItem fx:id="newGameItemCreators" mnemonicParsing="false" onAction="#onNewGameActionClick" onMenuValidation="#onNewGameActionClick" text="Nowa gra" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="O programie">
+            <items>
+              <MenuItem fx:id="menuItemCreators" mnemonicParsing="false" onAction="#onMenuItemCreatorsActionClick" onMenuValidation="#onMenuItemCreatorsActionClick" text="Twórcy" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label layoutX="168.0" layoutY="168.0" text="PONG v2.0">
+         <font>
+            <Font name="FreeSerif" size="56.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
