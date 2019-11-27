@@ -5,6 +5,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 // klasa komunikacyjna
 //////////////////////////////////////////////////////////////////////////////
@@ -13,8 +15,9 @@ public class UDPConn {
 	DatagramSocket serverSocket;
 	byte[] receiveData = new byte[8];
 	DatagramPacket receivePacket;
-	byte[] sendData = new byte[8];
+	byte[] sendData;
 	InetAddress IPAddress;
+	Frame frame = new Frame();
 
 	public UDPConn(int port) {
 		this.port = port;
@@ -26,6 +29,11 @@ public class UDPConn {
 			System.out.println("ERROR: Nie udalo sie stworzyc gniazda komunikacyjnego");
 			e.printStackTrace();
 		}
+		
+		Timer timer = new Timer(); 
+        TimerTask task = new ConnectionTimer();         
+        timer.schedule(task, 2000, 10); 
+			
 	}
 
 	// funkcja do odbioru danych w petli
@@ -57,7 +65,18 @@ public class UDPConn {
 			System.out.println("ERROR: Nie udalo sie wyslac danych do odbiorcy");
 			e.printStackTrace();
 		}
-
 	}
+	
+	// timer do obslugi wysylanych wiadomosci
+	///////////////////////////////////////////////////////////////////////////////////////////
+	class ConnectionTimer extends TimerTask 
+	{ 
+	    public void run() 
+	    { 
+	    	sendData = frame.convertFrameToByteArray(frame);
+	    	send();
+	    	System.out.println();
+	    } 
+	} 
 
 }
