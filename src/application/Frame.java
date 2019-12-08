@@ -13,22 +13,23 @@ public class Frame {
 
 	ByteBuffer buf = ByteBuffer.allocate(24);
 
-	int myXPosition;
-	int myYPosition;
-	int opponentXposition;
-	int opponentYpostion;
-	int ballXposition;
-	int ballYposition;	
+	int myXPosition = 0;
+	int myYPosition = 0;
+	int opponentXposition = 0;
+	int opponentYpostion = 0;
+	int ballXposition = 0;
+	int ballYposition = 0;
 	
 	public Frame()
 	{
-		// buf.putInt(value);
+		
 	}
 	
 	// konwersja integerow do buforu bajtow
 	///////////////////////////////////////////////////////////////////////////////////
 	public byte[] convertFrameToByteArray(Frame frame)
 	{
+		 buf.clear();
 		 buf.putInt(myXPosition);
 		 buf.putInt(myYPosition);
 		 buf.putInt(opponentXposition);
