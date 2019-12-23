@@ -55,8 +55,10 @@ public class SampleController {
          Scene dialogScene = new Scene(dialogVbox);
          dialog.setScene(dialogScene);
          dialog.show();
+       
 	}
-
+	
+	
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}

@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ModeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ModeController">
    <children>
       <Label layoutX="21.0" layoutY="28.0" text="Wybierz tryb połączenia:" />
       <ComboBox fx:id="modeComboBox" layoutX="19.0" layoutY="61.0" prefWidth="150.0" />
-      <TextField fx:id="addressIPTextField" layoutX="10.0" layoutY="142.0" text="localhost" />
-      <TextField fx:id="portTextField" layoutX="9.0" layoutY="200.0" text="localhost" />
+      <TextField fx:id="localAddressIPTextField" layoutX="10.0" layoutY="142.0" text="localhost" />
+      <TextField fx:id="remoteAddressIPTextField" layoutX="9.0" layoutY="200.0" text="localhost" />
       <Label layoutX="11.0" layoutY="175.0" text="Mój adres IP:" />
       <Label layoutX="11.0" layoutY="231.0" text="Przec. adres IP:" />
       <Button fx:id="startButton" layoutX="19.0" layoutY="333.0" mnemonicParsing="false" onAction="#onPortTextFieldActionClick" text="Zacznij nową grę" />
@@ -28,24 +28,24 @@
       <Label layoutX="35.0" layoutY="460.0" text="oponnentYPos:" />
       <Label layoutX="35.0" layoutY="480.0" text="ballXPos:" />
       <Label layoutX="35.0" layoutY="500.0" text="ballYPos:" />
-      <Label layoutX="144.0" layoutY="399.0" text="0" />
-      <Label layoutX="144.0" layoutY="419.0" text="0" />
-      <Label layoutX="144.0" layoutY="439.0" text="0" />
-      <Label layoutX="144.0" layoutY="460.0" text="0" />
-      <Label layoutX="144.0" layoutY="480.0" text="0" />
+      <Label fx:id="labelLocalMyXPosition" layoutX="144.0" layoutY="399.0" text="0" />
+      <Label fx:id="labelLocalMyYPosition" layoutX="144.0" layoutY="419.0" text="0" />
+      <Label fx:id="labelLocalOpponentXPos" layoutX="144.0" layoutY="439.0" text="0" />
+      <Label fx:id="labelLocalOpponentYPos" layoutX="144.0" layoutY="460.0" text="0" />
+      <Label fx:id="labelLocalBallXPos" layoutX="144.0" layoutY="480.0" text="0" />
       <Label layoutX="235.0" layoutY="400.0" text="myXPosition" />
       <Label layoutX="235.0" layoutY="420.0" text="myYPosition" />
       <Label layoutX="235.0" layoutY="440.0" text="oponnentXPos" />
       <Label layoutX="235.0" layoutY="460.0" text="oponnentYPos" />
       <Label layoutX="235.0" layoutY="480.0" text="ballXPos" />
-      <Label layoutX="340.0" layoutY="399.0" text="0" />
-      <Label layoutX="340.0" layoutY="419.0" text="0" />
-      <Label layoutX="340.0" layoutY="440.0" text="0" />
-      <Label layoutX="340.0" layoutY="459.0" text="0" />
-      <Label layoutX="340.0" layoutY="479.0" text="0" />
-      <Label layoutX="144.0" layoutY="497.0" text="0" />
+      <Label fx:id="labelRemoteMyXPosition" layoutX="340.0" layoutY="399.0" text="0" />
+      <Label fx:id="labelRemoteMyYPosition" layoutX="340.0" layoutY="419.0" text="0" />
+      <Label fx:id="labelRemoteOpponentXPos" layoutX="340.0" layoutY="440.0" text="0" />
+      <Label fx:id="labelRemoteOpponentYPos" layoutX="340.0" layoutY="459.0" text="0" />
+      <Label fx:id="labelRemoteBallXPos" layoutX="340.0" layoutY="479.0" text="0" />
+      <Label fx:id="labelLocalBallYPos" layoutX="144.0" layoutY="497.0" text="0" />
       <Label layoutX="235.0" layoutY="500.0" text="ballYPos" />
-      <Label layoutX="340.0" layoutY="497.0" text="0" />
+      <Label fx:id="labelRemoteBallYPos" layoutX="340.0" layoutY="497.0" text="0" />
       <Label layoutX="35.0" layoutY="379.0" text="Params sent:" />
       <Label layoutX="235.0" layoutY="379.0" text="Params received:" />
    </children>

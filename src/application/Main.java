@@ -16,11 +16,12 @@ public class Main extends Application {
 		try {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("PONG.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());		
 			primaryStage.setScene(scene);
-			primaryStage.show();	
+		    primaryStage.show();	
 		    SampleController sampleController =  new SampleController();
 		    sampleController.setPrimaryStage(primaryStage);	
+
 		    		    
 		} catch(Exception e) {
 			e.printStackTrace();
