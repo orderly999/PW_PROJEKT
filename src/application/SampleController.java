@@ -15,50 +15,46 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SampleController {
-	
+
 	Stage primaryStage;
-	@FXML 
+	@FXML
 	private MenuItem menuItemCreators;
-	@FXML 
+	@FXML
 	private MenuItem newGameItemCreators;
-	
+
 	// wyswietlenie okna z informacjami o tworcach
 	///////////////////////////////////////////////////////////
-	public void onMenuItemCreatorsActionClick(ActionEvent event)
-	{
-		 Stage dialog = new Stage();
-         dialog.initModality(Modality.APPLICATION_MODAL);
-         VBox dialogVbox = new VBox(20); 
-         try {
-			dialogVbox.getChildren().add((AnchorPane)FXMLLoader.load(getClass().getResource("Tworcy.fxml")));
+	public void onMenuItemCreatorsActionClick(ActionEvent event) {
+		Stage dialog = new Stage();
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		VBox dialogVbox = new VBox(20);
+		try {
+			dialogVbox.getChildren().add((AnchorPane) FXMLLoader.load(getClass().getResource("Tworcy.fxml")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-         Scene dialogScene = new Scene(dialogVbox);
-         dialog.setScene(dialogScene);
-         dialog.show();
+		Scene dialogScene = new Scene(dialogVbox);
+		dialog.setScene(dialogScene);
+		dialog.show();
 	}
-	
-	
-	// wyswietlenie okna z polem opcji polaczenia 
+
+	// wyswietlenie okna z polem opcji polaczenia
 	//////////////////////////////////////////////////
-	public void onNewGameActionClick(ActionEvent event)
-	{
-		 Stage dialog = new Stage();
-         dialog.initModality(Modality.APPLICATION_MODAL);
-         VBox dialogVbox = new VBox(20); 
-         try {
-			dialogVbox.getChildren().add((AnchorPane)FXMLLoader.load(getClass().getResource("Mode.fxml")));
+	public void onNewGameActionClick(ActionEvent event) {
+		Stage dialog = new Stage();
+		dialog.initModality(Modality.APPLICATION_MODAL);
+		VBox dialogVbox = new VBox(20);
+		try {
+			dialogVbox.getChildren().add((AnchorPane) FXMLLoader.load(getClass().getResource("Mode.fxml")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-         Scene dialogScene = new Scene(dialogVbox);
-         dialog.setScene(dialogScene);
-         dialog.show();
-       
+		Scene dialogScene = new Scene(dialogVbox);
+		dialog.setScene(dialogScene);
+		dialog.show();
+
 	}
-	
-	
+
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}

@@ -5,8 +5,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -19,20 +17,22 @@ public class UDPConn {
 	int clientPort = 8888;
 	// int opponentPort = 7777;
 	DatagramSocket serverSocket;
-	byte[] receiveData = new byte[8];
+	byte[] receiveData = new byte[24];
 	DatagramPacket receivePacket;
 	byte[] sendData;
 	InetAddress myIPAddress;
 	InetAddress oponnentIPAddress;
 	boolean isServer = false;
-	Frame frame = new Frame();
+	Frame sentFrame = new Frame();
+	Frame receivedFrame = new Frame();
 	TextArea textArea;
+	TimerTask task;
 
 	public UDPConn(boolean isServer, InetAddress myIPAddress, InetAddress oponnentIPAddress, TextArea textArea) {
 		this.textArea = textArea;
 		this.myIPAddress = myIPAddress;
 		this.oponnentIPAddress = oponnentIPAddress;
-        this.isServer = isServer;
+		this.isServer = isServer;
 		try {
 			if (this.isServer) {
 				serverSocket = new DatagramSocket(serverPort);
@@ -42,14 +42,15 @@ public class UDPConn {
 			this.textArea.appendText("INFO: Stworzono gniazdo na porcie: " + serverSocket.getLocalPort());
 
 			receivePacket = new DatagramPacket(receiveData, receiveData.length);
-
+			receive();
 		} catch (SocketException e) {
 			System.out.println("ERROR: Nie udalo sie stworzyc gniazda komunikacyjnego");
 			e.printStackTrace();
 		}
 		Timer timer = new Timer();
-		TimerTask task = new ConnectionTimer();
+		task = new ConnectionTimer();
 		timer.schedule(task, 2000, 10);
+
 	}
 
 	// funkcja do odbioru danych w petli
@@ -57,18 +58,20 @@ public class UDPConn {
 	public void receive() {
 		Thread t = new Thread(() -> {
 			while (true) {
+				// System.out.println("Wejscie do receive ");
 				try {
 					serverSocket.receive(receivePacket);
 				} catch (IOException e) {
 					System.out.println("ERROR: Blad przy odbiorze datagramu");
 					e.printStackTrace();
+					if (serverSocket.isClosed())
+						return;
 				}
-				String sentence = new String(receivePacket.getData(), 0, receivePacket.getLength());
-				receivePacket.getAddress();
-				System.out.println("INFO: Odebrano " + sentence);
+				receivedFrame.convertByteArrayToFrame(receivePacket.getData());
 
 			}
 		});
+		t.start();
 	}
 
 	// funkcja do wysylania danych
@@ -83,12 +86,16 @@ public class UDPConn {
 			serverSocket.send(sendPacket);
 			// String s = StandardCharsets.UTF_8.decode(sendPacket.getData()).toString();
 			// String s = new String(sendData, "ASCII");
-		//	System.out.println("SEND: " +  this.isServer);
+			// System.out.println("SEND: " + this.isServer);
 			// this.textArea.appendText("INFO: Wysłano pakiet: " +
 			// Arrays.toString(sendPacket.getData()) + "\n");
+
 		} catch (IOException e) {
 			System.out.println("ERROR: Nie udalo sie wyslac danych do odbiorcy");
 			e.printStackTrace();
+			task.cancel();
+			if (serverSocket.isClosed())
+				return;
 		}
 	}
 
@@ -96,7 +103,7 @@ public class UDPConn {
 	///////////////////////////////////////////////////////////////////////////////////////////
 	class ConnectionTimer extends TimerTask {
 		public void run() {
-			sendData = frame.convertFrameToByteArray(frame);
+			sendData = sentFrame.convertFrameToByteArray(sentFrame);
 			send();
 			// System.out.println();
 		}

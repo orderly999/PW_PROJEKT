@@ -5,7 +5,6 @@ import java.net.UnknownHostException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import application.UDPConn.ConnectionTimer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,6 +71,8 @@ public class ModeController {
 
 	// boolean isServer
 
+	UDPConn uDPConn;
+
 	public ModeController() {
 		///
 	}
@@ -105,21 +106,38 @@ public class ModeController {
 	public void onPortTextFieldActionClick(ActionEvent event) throws UnknownHostException {
 		InetAddress localAddressIP = InetAddress.getByName(localAddressIPTextField.getText());
 		InetAddress remoteAddressIP = InetAddress.getByName(remoteAddressIPTextField.getText());
-		UDPConn uDPConn;
 
-		if (modeComboBox.getValue().toString().contains("Klient"))
+		if (modeComboBox.getValue().toString().contains("Klient")) {
 			uDPConn = new UDPConn(false, localAddressIP, remoteAddressIP, this.textArea);
-		else
+			this.localAddressIPTextField.setText("192.168.40.95");
+			this.remoteAddressIPTextField.setText("192.168.40.94");
+		} else {
 			uDPConn = new UDPConn(true, localAddressIP, remoteAddressIP, this.textArea);
+			this.localAddressIPTextField.setText("192.168.40.94");
+			this.remoteAddressIPTextField.setText("192.168.40.95");
+		}
 
 		//
-		gameFrame = new GameFrame();
+		try {
+			gameFrame = new GameFrame(uDPConn);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// obsluga handlera combo do wyboru trybu
 	//////////////////////////////////////////////////
 	@FXML
 	public void onModeComboBoxActionClick(ActionEvent event) {
+
+		if (modeComboBox.getValue().toString().contains("Klient")) {
+			this.localAddressIPTextField.setText("192.168.40.95");
+			this.remoteAddressIPTextField.setText("192.168.40.94");
+		} else {
+			this.localAddressIPTextField.setText("192.168.40.94");
+			this.remoteAddressIPTextField.setText("192.168.40.95");
+		}
 
 	}
 
@@ -133,11 +151,10 @@ public class ModeController {
 
 			@Override
 			public void run() {
-		labelLocalMyXPosition.setText(labelLocalMyXPositionStr);
+				labelLocalMyXPosition.setText(labelLocalMyXPositionStr);
 			}
 		});
 
-	
 	}
 
 	public String getLabelLocalMyYPosition() {
@@ -154,7 +171,6 @@ public class ModeController {
 			}
 		});
 
-	
 	}
 
 	public String getLabelLocalOpponentXPos() {
@@ -171,7 +187,6 @@ public class ModeController {
 			}
 		});
 
-	
 	}
 
 	public String getLabelLocalOpponentYPos() {
@@ -188,7 +203,6 @@ public class ModeController {
 			}
 		});
 
-	
 	}
 
 	public String getLabelLocalBallXPos() {
@@ -205,7 +219,6 @@ public class ModeController {
 			}
 		});
 
-
 	}
 
 	public String getLabelLocalBallYPos() {
@@ -221,7 +234,6 @@ public class ModeController {
 				labelLocalBallYPos.setText(labelLocalBallYPosStr);
 			}
 		});
-
 
 	}
 
@@ -247,17 +259,16 @@ public class ModeController {
 	}
 
 	public void setLabelRemoteMyYPosition(String labelRemoteMyYPositionStr) {
-		
-		
+
 		Platform.runLater(new Runnable() {
 
 			@Override
 			public void run() {
 				labelRemoteMyYPosition.setText(labelRemoteMyYPositionStr);
-			
+
 			}
 		});
-		
+
 	}
 
 	public String getLabelRemoteOpponentXPos() {
@@ -274,7 +285,6 @@ public class ModeController {
 			}
 		});
 
-	
 	}
 
 	public String getLabelRemoteOpponentYPos() {
@@ -287,11 +297,10 @@ public class ModeController {
 
 			@Override
 			public void run() {
-
+				labelRemoteOpponentYPos.setText(labelRemoteOpponentYPosStr);
 			}
 		});
 
-		this.labelRemoteOpponentYPos.setText(labelRemoteOpponentYPosStr);
 	}
 
 	public String getLabelRemoteBallXPos() {
@@ -321,7 +330,15 @@ public class ModeController {
 				labelRemoteBallYPos.setText(labelRemoteBallYPosStr);
 			}
 		});
-		
+
+	}
+
+	// zamknij aplikacje
+	//////////////////////////////////////////////////////////////////////////////////////////
+
+	@FXML
+	public void exitApplication(ActionEvent event) {
+		Platform.exit();
 	}
 
 	// timer do cyklicznej aktualizacji stanu labelow
@@ -330,7 +347,17 @@ public class ModeController {
 		public void run() {
 			if (gameFrame != null) {
 				setLabelLocalMyYPosition(Integer.toString(gameFrame.getPaddleLocation()));
-
+				setLabelLocalMyXPosition(Integer.toString(gameFrame.uDPConn.sentFrame.myXPosition));							
+				setLabelRemoteMyYPosition(Integer.toString(gameFrame.uDPConn.receivedFrame.myYPosition));
+				setLabelRemoteMyXPosition(Integer.toString(gameFrame.uDPConn.receivedFrame.myXPosition));						
+				setLabelLocalBallXPos(Integer.toString(gameFrame.uDPConn.sentFrame.ballXposition));
+				setLabelLocalBallYPos(Integer.toString(gameFrame.uDPConn.sentFrame.ballYposition));
+				setLabelRemoteBallXPos(Integer.toString(gameFrame.uDPConn.receivedFrame.ballXposition));
+				setLabelRemoteBallYPos(Integer.toString(gameFrame.uDPConn.receivedFrame.ballYposition));
+				setLabelLocalOpponentXPos(Integer.toString(gameFrame.uDPConn.sentFrame.opponentXposition));
+				setLabelLocalOpponentYPos(Integer.toString(gameFrame.uDPConn.sentFrame.opponentYposition));
+				setLabelRemoteOpponentXPos(Integer.toString(gameFrame.uDPConn.receivedFrame.opponentXposition));
+				setLabelRemoteOpponentYPos(Integer.toString(gameFrame.uDPConn.receivedFrame.opponentXposition));
 			}
 		}
 	}

@@ -11,9 +11,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ModeController">
    <children>
       <Label layoutX="21.0" layoutY="28.0" text="Wybierz tryb połączenia:" />
-      <ComboBox fx:id="modeComboBox" layoutX="19.0" layoutY="61.0" prefWidth="150.0" />
-      <TextField fx:id="localAddressIPTextField" layoutX="10.0" layoutY="142.0" text="localhost" />
-      <TextField fx:id="remoteAddressIPTextField" layoutX="9.0" layoutY="200.0" text="localhost" />
+      <ComboBox fx:id="modeComboBox" layoutX="19.0" layoutY="61.0" onAction="#onModeComboBoxActionClick" prefWidth="150.0" />
+      <TextField fx:id="localAddressIPTextField" layoutX="10.0" layoutY="142.0" text="192.168.40.94" />
+      <TextField fx:id="remoteAddressIPTextField" layoutX="9.0" layoutY="200.0" text="192.168.40.95" />
       <Label layoutX="11.0" layoutY="175.0" text="Mój adres IP:" />
       <Label layoutX="11.0" layoutY="231.0" text="Przec. adres IP:" />
       <Button fx:id="startButton" layoutX="19.0" layoutY="333.0" mnemonicParsing="false" onAction="#onPortTextFieldActionClick" text="Zacznij nową grę" />
