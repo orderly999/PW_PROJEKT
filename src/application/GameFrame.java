@@ -25,14 +25,14 @@ public class GameFrame {
 	
 	UDPConn uDPConn;
 
-	// obiekty palatek
+	// obiekty palatek @PrzemysławJarek
 	///////////////////////////////////////////////////////
-//	Rectangle myPaddle = new Rectangle(20, 100, 20, 100);
-//	Rectangle oppPaddle = new Rectangle(760, 400, 20, 100);
 
 	public Box  leftPaddle = new Box(20, 200, 50);
 	public Box  rightPaddle= new Box(20, 200, 50);
-	// obiekt kuli
+	public Box powerUpBox = new Box(50,50,50);
+	
+	// obiekt kuli @PrzemysławJarek
 	/////////////////////////////////////////////
 	public Sphere ball = new Sphere();
 	
@@ -41,24 +41,29 @@ public class GameFrame {
 	
 	Text serverResultText;
 	Text clientResultText;
-
+	
+	
+	// inicjalizacja ramki gry @PrzemysławJarek
+    ///////////////////////////////////////////////////////////////
 	public GameFrame(UDPConn uDPConn) throws InterruptedException {
 		super();
 		this.uDPConn = uDPConn;
 		
-		serverResultText = addReflectionText(root, "0", 300, 200);
-		addReflectionText(root, ":", 370, 200);
-		clientResultText = addReflectionText(root, "0", 410, 200);
+		serverResultText = addReflectionText(root, "0", 300, 20);
+		addReflectionText(root, ":", 370, 20);
+		clientResultText = addReflectionText(root, "0", 410, 20);
 		
 		addBall(root);
 		addMyPaddle(root);
 		addOppPaddle(root);
+		addPowerUpBox(root);
 		
 		Scene secondScene = new Scene(root, 800, 600);
 		Timeline tl = new Timeline();
 		GameController gc = new GameController(this, uDPConn.isServer);
-		tl.getKeyFrames().add(new KeyFrame(Duration.millis(10),  event -> {
+		tl.getKeyFrames().add(new KeyFrame(Duration.millis(20),  event -> {
             try {
+            	if (this.uDPConn.isClientActive)
 				gc.run();
 
 				uDPConn.sentFrame.myYPosition = paddleLocation;
@@ -71,14 +76,14 @@ public class GameFrame {
             
             }));
 		
-		
 		secondScene.setOnKeyPressed(e -> {
 			if (e.getCode() == KeyCode.UP) {
-				if (paddleLocation > 0)
+				if (paddleLocation > 100)
 					paddleLocation-=10;
 			}
 
 			if (e.getCode() == KeyCode.DOWN) {
+				if (paddleLocation < 500)
 				paddleLocation+=10;
 			}
 					
@@ -97,7 +102,7 @@ public class GameFrame {
 		tl.play();	
 		
 		
-		// zamknij aplikacje
+		// zamknij aplikacje @KamilKruk
 		/////////////////////////////////////////////
 		newWindow.setOnCloseRequest(event -> {
 			Platform.exit();
@@ -107,16 +112,21 @@ public class GameFrame {
 		
 	}
 
+	// getter dla polozenia paletki @PrzemysławJarek
+    ///////////////////////////////////////////////////////////////
 	public int getPaddleLocation() {
 		return paddleLocation;
 	}
 
+
+	// setter dla polozenia paletki @PrzemysławJarek
+    ///////////////////////////////////////////////////////////////
 	public void setPaddleLocation(int paddleLocation) {
 		this.paddleLocation = paddleLocation;
 	}
 
-	// dodanie parametrow kuli
-	/////////////////////////////////////////
+	// dodanie parametrow kuli @PrzemysławJarek
+	///////////////////////////////////////////////////////////////
 	public void addBall(Group root) {
 		ball.setRadius(15.0);
 		ball.setTranslateX(400);
@@ -125,8 +135,16 @@ public class GameFrame {
 		// Group root = new Group(sphere);
 		// return root;
 	}
+	
+	// dodanie parametrow kuli @PrzemysławJarek
+	///////////////////////////////////////////////////////////////
+	public void addPowerUpBox(Group root) {
+		powerUpBox.setTranslateX(400);
+		powerUpBox.setTranslateY(300);
+		root.getChildren().add(powerUpBox);
+	}
 
-	// dodanie parametrow paletki
+	// dodanie parametrow paletki @PrzemysławJarek
 	/////////////////////////////////////////
 	public void addMyPaddle(Group root) {
 		leftPaddle.setTranslateX(20);
@@ -135,7 +153,7 @@ public class GameFrame {
 
 	}
 
-	// dodanie parametrow paletki
+	// dodanie parametrow paletki @PrzemysławJarek
 	/////////////////////////////////////////
 	public void addOppPaddle(Group root) {
 		rightPaddle.setTranslateX(780);
@@ -143,7 +161,7 @@ public class GameFrame {
 		root.getChildren().add(rightPaddle);
 	}
 	
-	// dodanie tekstu
+	// dodanie tekstu @KamilKruk
     /////////////////////////////////////////
 		public Text addReflectionText(Group root, String text, int x, int y) {
 			Text t  = new Text();

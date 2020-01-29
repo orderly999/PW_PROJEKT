@@ -7,10 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -22,7 +20,7 @@ public class SampleController {
 	@FXML
 	private MenuItem newGameItemCreators;
 
-	// wyswietlenie okna z informacjami o tworcach
+	// wyswietlenie okna z informacjami o tworcach @PrzemysławJarek
 	///////////////////////////////////////////////////////////
 	public void onMenuItemCreatorsActionClick(ActionEvent event) {
 		Stage dialog = new Stage();
@@ -38,8 +36,8 @@ public class SampleController {
 		dialog.show();
 	}
 
-	// wyswietlenie okna z polem opcji polaczenia
-	//////////////////////////////////////////////////
+	// wyswietlenie okna z polem opcji polaczenia @KamilKruk
+	/////////////////////////////////////////////////////////////////
 	public void onNewGameActionClick(ActionEvent event) {
 		Stage dialog = new Stage();
 		dialog.initModality(Modality.APPLICATION_MODAL);
@@ -55,10 +53,14 @@ public class SampleController {
 
 	}
 
+	// zwrocenie stage @PrzemysławJarek
+	///////////////////////////////////////////////////////////
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
+    // ustawienie stage @PrzemysławJarek
+	///////////////////////////////////////////////////////////
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}

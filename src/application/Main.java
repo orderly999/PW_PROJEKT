@@ -2,8 +2,6 @@ package application;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +11,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+		//  @PrzemysławJarek
+			///////////////////////////////////////////////////////////
 			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("PONG.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -21,7 +21,7 @@ public class Main extends Application {
 			SampleController sampleController = new SampleController();
 			sampleController.setPrimaryStage(primaryStage);
 
-			// zamknij aplikacje
+			// zamknij aplikacje @KamilKruk
 			/////////////////////////////////////////////
 			primaryStage.setOnCloseRequest(event -> {
 				Platform.exit();
@@ -36,7 +36,7 @@ public class Main extends Application {
 		launch(args);
 	}
 
-	// zamknij aplikacje
+	// zamknij aplikacje @KamilKruk
 	//////////////////////////////////////////////////////////////////////////////////////////
 	@Override
 	public void stop() {
