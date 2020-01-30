@@ -28,8 +28,14 @@ public class UDPConn {
 	TimerTask task;
 	boolean isClientActive = false;
 
-	// inicjalizacja gniazda komunikacyjnego @KamilKruk
-	/////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * inicjalizacja gniazda komunikacyjnego 
+	 * @param isServer
+	 * @param myIPAddress
+	 * @param oponnentIPAddress
+	 * @param textArea
+	 * @author KamilKruk
+	 */
 	public UDPConn(boolean isServer, InetAddress myIPAddress, InetAddress oponnentIPAddress, TextArea textArea) {
 		this.textArea = textArea;
 		this.myIPAddress = myIPAddress;
@@ -55,8 +61,10 @@ public class UDPConn {
 
 	}
 
-	// funkcja do odbioru danych w petli @KamilKruk
-	/////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * funkcja do odbioru danych w petli 
+	 * @author KamilKruk
+	 */
 	public void receive() {
 		Thread t = new Thread(() -> {
 			while (true) {
@@ -78,8 +86,10 @@ public class UDPConn {
 		t.start();
 	}
 
-	// funkcja do wysylania danych @KamilKruk
-	///////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * funkcja do wysylania danych 
+	 * @author KamilKruk
+	 */
 	public void send() {
 		DatagramPacket sendPacket;
 		if (this.isServer)
@@ -98,8 +108,11 @@ public class UDPConn {
 		}
 	}
 
-	// timer do obslugi wysylanych wiadomosci @KamilKruk
-	///////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * timer do obslugi wysylanych wiadomosci 
+	 * @author KamilKruk
+	 *
+	 */
 	class ConnectionTimer extends TimerTask {
 		public void run() {
 			sendData = sentFrame.convertFrameToByteArray(sentFrame);

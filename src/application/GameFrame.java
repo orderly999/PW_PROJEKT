@@ -42,9 +42,12 @@ public class GameFrame {
 	Text serverResultText;
 	Text clientResultText;
 	
-	
-	// inicjalizacja ramki gry @PrzemysławJarek
-    ///////////////////////////////////////////////////////////////
+	/**
+	 * inicjalizacja ramki gry 
+	 * @param uDPConn
+	 * @throws InterruptedException
+	 * @author PrzemysławJarek
+	 */
 	public GameFrame(UDPConn uDPConn) throws InterruptedException {
 		super();
 		this.uDPConn = uDPConn;
@@ -70,7 +73,6 @@ public class GameFrame {
 				rightPaddle.setTranslateY(uDPConn.receivedFrame.myYPosition);
 				
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             
@@ -112,40 +114,52 @@ public class GameFrame {
 		
 	}
 
-	// getter dla polozenia paletki @PrzemysławJarek
-    ///////////////////////////////////////////////////////////////
+	/**
+	 * getter dla polozenia paletki 
+	 * @return
+	 * @author PrzemysławJarek
+	 */
 	public int getPaddleLocation() {
 		return paddleLocation;
 	}
 
-
-	// setter dla polozenia paletki @PrzemysławJarek
-    ///////////////////////////////////////////////////////////////
+	/**
+	 * setter dla polozenia paletki
+	 * @param paddleLocation
+	 * @author PrzemysławJarek
+	 */
 	public void setPaddleLocation(int paddleLocation) {
 		this.paddleLocation = paddleLocation;
 	}
 
-	// dodanie parametrow kuli @PrzemysławJarek
-	///////////////////////////////////////////////////////////////
+	/**
+	 * dodanie parametrow kuli
+	 * @param root
+	 * @author PrzemysławJarek
+	 */
 	public void addBall(Group root) {
 		ball.setRadius(15.0);
 		ball.setTranslateX(400);
 		ball.setTranslateY(400);
 		root.getChildren().add(ball);
-		// Group root = new Group(sphere);
-		// return root;
 	}
-	
-	// dodanie parametrow kuli @PrzemysławJarek
-	///////////////////////////////////////////////////////////////
+
+	/**
+	 * dodanie parametrow kuli
+	 * @param root
+	 * @author PrzemysławJarek
+	 */
 	public void addPowerUpBox(Group root) {
 		powerUpBox.setTranslateX(400);
 		powerUpBox.setTranslateY(300);
 		root.getChildren().add(powerUpBox);
 	}
 
-	// dodanie parametrow paletki @PrzemysławJarek
-	/////////////////////////////////////////
+	/**
+	 * dodanie parametrow paletki 
+	 * @param root
+	 * @author PrzemysławJarek
+	 */
 	public void addMyPaddle(Group root) {
 		leftPaddle.setTranslateX(20);
 		// myPaddle.setTranslateY(150);
@@ -153,16 +167,26 @@ public class GameFrame {
 
 	}
 
-	// dodanie parametrow paletki @PrzemysławJarek
-	/////////////////////////////////////////
+	/**
+	 * dodanie parametrow paletki 
+	 * @param root
+	 * @author PrzemysławJarek
+	 */
 	public void addOppPaddle(Group root) {
 		rightPaddle.setTranslateX(780);
 		rightPaddle.setTranslateY(150);
 		root.getChildren().add(rightPaddle);
 	}
 	
-	// dodanie tekstu @KamilKruk
-    /////////////////////////////////////////
+		/**
+		 * dodanie tekstu wyswietlajacego wynik
+		 * @param root
+		 * @param text
+		 * @param x
+		 * @param y
+		 * @author KamilKruk
+		 * @return
+		 */
 		public Text addReflectionText(Group root, String text, int x, int y) {
 			Text t  = new Text();
 					t.setX(20);

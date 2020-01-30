@@ -69,14 +69,22 @@ public class ModeController {
 	@FXML
 	private Label labelRemoteBallYPos;
 
+	/**
+	 * 
+	 */
 	UDPConn uDPConn;
 
+	/**
+	 * 
+	 */
 	public ModeController() {
 
 	}
 
-	// inicjalizacja elementow FXML @KamilKruk
-	///////////////////////////////////////////////////////
+	/**
+	 * inicjalizacja elementow FXML
+	 * @author KamilKruk
+	 */
 	@FXML
 	public void initialize() {
 		modeComboBox.getItems().addAll("Serwer", "Klient");
@@ -98,8 +106,12 @@ public class ModeController {
 
 	}
 
-	// obsluga handlera przycisku zacznij nowa gre @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * obsluga handlera przycisku zacznij nowa gre
+	 * @param event
+	 * @throws UnknownHostException
+	 * @author KamilKruk
+	 */
 	@FXML
 	public void onPortTextFieldActionClick(ActionEvent event) throws UnknownHostException {
 		InetAddress localAddressIP = InetAddress.getByName(localAddressIPTextField.getText());
@@ -122,8 +134,11 @@ public class ModeController {
 		}
 	}
 
-	// obsluga handlera combo do wyboru trybu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * obsluga handlera combo do wyboru trybu
+	 * @param event
+	 * @author KamilKruk
+	 */
 	@FXML
 	public void onModeComboBoxActionClick(ActionEvent event) {
 
@@ -137,14 +152,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelLocalMyXPosition() {
 		return labelLocalMyXPosition.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu
+	 * @param labelLocalMyXPositionStr
+	 * @author KamilKruk
+	 */
 	public void setLabelLocalMyXPosition(String labelLocalMyXPositionStr) {
 
 		Platform.runLater(new Runnable() {
@@ -157,14 +178,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelLocalMyYPosition() {
 		return labelLocalMyYPosition.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu
+	 * @param labelLocalMyYPositionStr
+	 * @author KamilKruk
+	 */
 	public void setLabelLocalMyYPosition(String labelLocalMyYPositionStr) {
 
 		Platform.runLater(new Runnable() {
@@ -177,14 +204,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelLocalOpponentXPos() {
 		return labelLocalOpponentXPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu
+	 * @param labelLocalOpponentXPosStr
+	 * @author KamilKruk
+	 */
 	public void setLabelLocalOpponentXPos(String labelLocalOpponentXPosStr) {
 
 		Platform.runLater(new Runnable() {
@@ -197,14 +230,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu 
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelLocalOpponentYPos() {
 		return labelLocalOpponentYPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu 
+	 * @param labelLocalOpponentYPosStr
+	 * @author KamilKruk
+	 */
 	public void setLabelLocalOpponentYPos(String labelLocalOpponentYPosStr) {
 
 		Platform.runLater(new Runnable() {
@@ -217,14 +256,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 *  getter dla pobrania tekstu 
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelLocalBallXPos() {
 		return labelLocalBallXPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu
+	 * @param labelLocalBallXPosStr
+	 * @author KamilKruk
+	 */
 	public void setLabelLocalBallXPos(String labelLocalBallXPosStr) {
 
 		Platform.runLater(new Runnable() {
@@ -237,14 +282,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelLocalBallYPos() {
 		return labelLocalBallYPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu 
+	 * @param labelLocalBallYPosStr
+	 * @author KamilKruk
+	 */
 	public void setLabelLocalBallYPos(String labelLocalBallYPosStr) {
 
 		Platform.runLater(new Runnable() {
@@ -257,14 +308,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelRemoteMyXPosition() {
 		return labelRemoteMyXPosition.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu 
+	 * @param labelRemoteMyXPositionStr
+	 * @author KamilKruk
+	 */
 	public void setLabelRemoteMyXPosition(String labelRemoteMyXPositionStr) {
 
 		Platform.runLater(new Runnable() {
@@ -277,15 +334,21 @@ public class ModeController {
 		});
 
 	}
-
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	
+	/**
+	 *  getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelRemoteMyYPosition() {
 		return labelRemoteMyYPosition.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu
+	 * @param labelRemoteMyYPositionStr
+	 * @author KamilKruk
+	 */
 	public void setLabelRemoteMyYPosition(String labelRemoteMyYPositionStr) {
 
 		Platform.runLater(new Runnable() {
@@ -299,14 +362,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelRemoteOpponentXPos() {
 		return labelRemoteOpponentXPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu
+	 * @param labelRemoteOpponentXPosStr
+	 * @author KamilKruk
+	 */
 	public void setLabelRemoteOpponentXPos(String labelRemoteOpponentXPosStr) {
 
 		Platform.runLater(new Runnable() {
@@ -319,14 +388,19 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelRemoteOpponentYPos() {
 		return labelRemoteOpponentYPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu 
+	 * @param labelRemoteOpponentYPosStr
+	 */
 	public void setLabelRemoteOpponentYPos(String labelRemoteOpponentYPosStr) {
 
 		Platform.runLater(new Runnable() {
@@ -339,14 +413,20 @@ public class ModeController {
 
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelRemoteBallXPos() {
 		return labelRemoteBallXPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu
+	 * @param labelRemoteBallXPosStr
+	 * @author KamilKruk
+	 */
 	public void setLabelRemoteBallXPos(String labelRemoteBallXPosStr) {
 
 		Platform.runLater(new Runnable() {
@@ -358,14 +438,20 @@ public class ModeController {
 		});
 	}
 
-	// getter dla pobrania tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * getter dla pobrania tekstu 
+	 * @return
+	 * @author KamilKruk
+	 */
 	public String getLabelRemoteBallYPos() {
 		return labelRemoteBallYPos.getText();
 	}
 
-	// setter dla ustawienia tekstu @KamilKruk
-	//////////////////////////////////////////////////
+	/**
+	 * setter dla ustawienia tekstu 
+	 * @param labelRemoteBallYPosStr
+	 * @author KamilKruk
+	 */
 	public void setLabelRemoteBallYPos(String labelRemoteBallYPosStr) {
 		Platform.runLater(new Runnable() {
 
@@ -377,15 +463,20 @@ public class ModeController {
 
 	}
 
-	// zamknij aplikacje @KamilKruk
-	//////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * zamknij aplikacje 
+	 * @param event
+	 * @author KamilKruk
+	 */
 	@FXML
 	public void exitApplication(ActionEvent event) {
 		Platform.exit();
 	}
 
-	// timer do cyklicznej aktualizacji stanu labelow @PrzemysławJarek
-	///////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * timer do cyklicznej aktualizacji stanu labelow 
+	 * @author PrzemysławJarek
+	 */
 	class DisplayTimer extends TimerTask {
 		public void run() {
 			if (gameFrame != null) {

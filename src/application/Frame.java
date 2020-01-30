@@ -3,9 +3,11 @@ package application;
 import java.nio.ByteBuffer;
 
 
-
-// klasa reprezentuje ramke wymieniana pomiedzy programami @KamilKruk
-//////////////////////////////////////////////////////////////////////////////////////
+/**
+ * klasa reprezentuje ramke wymieniana pomiedzy programami
+ * @author KamilKruk
+ *
+ */
 public class Frame {
 
 	ByteBuffer buf = ByteBuffer.allocate(24);
@@ -17,12 +19,19 @@ public class Frame {
 	int ballXposition = 0;
 	int ballYposition = 0;
 
+	/**
+	 * 
+	 */
 	public Frame() {
 
 	}
 
-	// konwersja integerow do buforu bajtow @KamilKruk
-	///////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * konwersja integerow do buforu
+	 * @author KamilKruk
+	 * @param frame
+	 * @return
+	 */
 	public byte[] convertFrameToByteArray(Frame frame) {
 		buf.clear();
 		buf.putInt(myPowerUpId);
@@ -34,8 +43,11 @@ public class Frame {
 		return buf.array();
 	}
 
-	/// konwersja tablicy bajtowej do integerow @KamilKruk
-	///////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * konwersja tablicy bajtowej do integerow 
+	 * @author KamilKruk
+	 * @param array
+	 */
 	public void convertByteArrayToFrame(byte[] array) {
 		this.myPowerUpId = (int) ((array[0] & 0xFF) << 24 | (array[1] & 0xFF) << 16 | (array[2] & 0xFF) << 8
 				| (array[3] & 0xFF));

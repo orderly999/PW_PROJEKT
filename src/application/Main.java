@@ -8,6 +8,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	/**
+	 *
+	 *@author PrzemysławJarek
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -32,12 +36,18 @@ public class Main extends Application {
 		}
 	}
 
+	/**
+	 * @param args
+	 * @author KamilKruk
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
 
-	// zamknij aplikacje @KamilKruk
-	//////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * zamknij aplikacje
+	 *@author KamilKruk
+	 */
 	@Override
 	public void stop() {
 		Platform.exit();

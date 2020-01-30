@@ -20,8 +20,11 @@ public class SampleController {
 	@FXML
 	private MenuItem newGameItemCreators;
 
-	// wyswietlenie okna z informacjami o tworcach @PrzemysławJarek
-	///////////////////////////////////////////////////////////
+	/**
+	 * wyswietlenie okna z informacjami o tworcach
+	 * @param event
+	 * @author PrzemysławJarek
+	 */
 	public void onMenuItemCreatorsActionClick(ActionEvent event) {
 		Stage dialog = new Stage();
 		dialog.initModality(Modality.APPLICATION_MODAL);
@@ -36,8 +39,11 @@ public class SampleController {
 		dialog.show();
 	}
 
-	// wyswietlenie okna z polem opcji polaczenia @KamilKruk
-	/////////////////////////////////////////////////////////////////
+	/**
+	 * wyswietlenie okna z polem opcji polaczenia
+	 * @param event
+	 * @author KamilKruk
+	 */
 	public void onNewGameActionClick(ActionEvent event) {
 		Stage dialog = new Stage();
 		dialog.initModality(Modality.APPLICATION_MODAL);
@@ -53,14 +59,20 @@ public class SampleController {
 
 	}
 
-	// zwrocenie stage @PrzemysławJarek
-	///////////////////////////////////////////////////////////
+	/**
+	 * zwrocenie stage
+	 * @return
+	 * @author PrzemysławJarek
+	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
 
-    // ustawienie stage @PrzemysławJarek
-	///////////////////////////////////////////////////////////
+	/**
+	 * ustawienie stage 
+	 * @param primaryStage
+	 * @author PrzemysławJarek
+	 */
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}

@@ -19,13 +19,21 @@ public class GameController {
 	final PhongMaterial material1 = new PhongMaterial();
 	final PhongMaterial material2 = new PhongMaterial();
 
+	/**
+	 * @author PrzemysławJarek
+	 * @param gameFrame
+	 * @param isServer
+	 */
 	public GameController(GameFrame gameFrame, boolean isServer) {
 		this.gameFrame = gameFrame;
 		this.isServer = isServer;
 	}
 
-	// callback do funkcji cyklicznie generujacej polozenie elementow @PrzemysławJarek
-	///////////////////////////////////////////////////////////////
+	/**
+	 * callback do funkcji cyklicznie generujacej polozenie elementow
+	 * @author PrzemysławJarek
+	 * @throws InterruptedException
+	 */
 	public void run() throws InterruptedException {
 
 		if (!isServer) {
@@ -179,8 +187,10 @@ public class GameController {
 		gameFrame.rightPaddle.setMaterial(material2);
 	}
 
-	// wlaczenie powerupu @PrzemysławJarek
-	//////////////////////////////////////////////////////////////////////
+	/**
+	 * wlaczenie powerupu
+	 * @author PrzemysławJarek
+	 */
 	private void powerUpOn() {
 		// Zielony - speed *2
 		if (randomized == 1) {
@@ -197,16 +207,21 @@ public class GameController {
 		powerUpClear();
 	}
 
-	// wylaczenie powerupu @PrzemysławJarek
-	//////////////////////////////////////////////////////////////////////
+	/**
+	 * wylaczenie powerupu
+	 * @author PrzemysławJarek
+	 */
 	private void powerUpClear() {
 		randomized = 3;
 		material1.setDiffuseColor(Color.WHITE);
 		gameFrame.powerUpBox.setMaterial(material1);
 	}
 
-	// sprawdzenie czy pilka jest w zasiegu powerupu @PrzemysławJarek
-	//////////////////////////////////////////////////////////////////////
+	/**
+	 * sprawdzenie czy pilka jest w zasiegu powerupu
+	 * @author PrzemysławJarek
+	 * @return
+	 */
 	private boolean ifPowerUpArea() {
 
 		if (gameFrame.ball.getTranslateX() > 350 && gameFrame.ball.getTranslateX() < 550
@@ -216,8 +231,10 @@ public class GameController {
 		return false;
 	}
 
-	// zmiana typu powerupu @PrzemysławJarek
-	//////////////////////////////////////////////////////////////////////
+	/**
+	 * zmiana typu powerupu 
+	 * @author PrzemysławJarek
+	 */
 	private void powerUpChange() {
 		if (isServer) {
 			int sum = (int) gameFrame.leftPaddle.getTranslateY() + (int) gameFrame.rightPaddle.getTranslateY()
@@ -240,8 +257,12 @@ public class GameController {
 
 	}
 
-	// funkcja do przemieszczania pilki @PrzemysławJarek
-	/////////////////////////////////////////////////////////////////////////
+	/**
+	 * funkcja do przemieszczania pilki
+	 * @author PrzemysławJarek
+	 * @param down
+	 * @param right
+	 */
 	public void moveBall(double down, double right) {
 		gameFrame.ball.setTranslateX(gameFrame.ball.getTranslateX() + right);
 		gameFrame.ball.setTranslateY(gameFrame.ball.getTranslateY() + down);
