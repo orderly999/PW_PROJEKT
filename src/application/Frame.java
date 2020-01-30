@@ -48,7 +48,7 @@ public class Frame {
 	 * @author KamilKruk
 	 * @param array
 	 */
-	public void convertByteArrayToFrame(byte[] array) {
+	public Frame convertByteArrayToFrame(byte[] array) {
 		this.myPowerUpId = (int) ((array[0] & 0xFF) << 24 | (array[1] & 0xFF) << 16 | (array[2] & 0xFF) << 8
 				| (array[3] & 0xFF));
 		this.myYPosition = (int) ((array[4] & 0xFF) << 24 | (array[5] & 0xFF) << 16 | (array[6] & 0xFF) << 8
@@ -61,6 +61,7 @@ public class Frame {
 				| (array[19] & 0xFF));
 		this.ballYposition = (int) ((array[20] & 0xFF) << 24 | (array[21] & 0xFF) << 16 | (array[22] & 0xFF) << 8
 				| (array[23] & 0xFF));
+		return this;
 	}
 
 }

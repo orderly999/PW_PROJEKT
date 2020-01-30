@@ -4,6 +4,10 @@ import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 
+/**
+ * @author PrzemysławJarek
+ * 
+ */
 public class GameController {
 
 	GameFrame gameFrame;

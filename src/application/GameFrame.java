@@ -17,6 +17,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;;
 
+/**
+ * @author KamilKruk
+ * 
+ */
 public class GameFrame {
 	
 	private int paddleLocation = 0;

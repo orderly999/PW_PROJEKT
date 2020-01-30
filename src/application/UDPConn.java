@@ -10,8 +10,10 @@ import java.util.TimerTask;
 
 import javafx.scene.control.TextArea;
 
-// klasa komunikacyjna @KamilKruk
-//////////////////////////////////////////////////////////////////////////////
+/**
+ * klasa komunikacyjna 
+ * @author KamilKruk
+ */
 public class UDPConn {
 	int serverPort = 7777;
 	int clientPort = 8888;

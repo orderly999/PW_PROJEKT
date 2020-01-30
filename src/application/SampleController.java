@@ -12,6 +12,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * @author PrzemysławJarek
+ * 
+ */
 public class SampleController {
 
 	Stage primaryStage;
